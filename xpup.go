@@ -77,14 +77,15 @@ func main() {
 			fatalf("failed to parse stdin: %v\n", err)
 		}
 	}
+	iter := path.Iter(root)
+	for iter.Next() {
+    	match := iter.Node().String()
+    	if omitNewline {
+		os.Stdout.Write(match)
+		} else {
+		fmt.Printf("%s\n", match)
+		}
+	}
 	out, ok := path.Bytes(root)
-	if !ok {
-		fmt.Fprintf(os.Stderr, "[xpup: no items selected]\n")
-		return
-	}
-	if omitNewline {
-		os.Stdout.Write(out)
-	} else {
-		fmt.Printf("%s\n", out)
-	}
+		
 }
