@@ -81,11 +81,10 @@ func main() {
 	for iter.Next() {
     	match := iter.Node().String()
     	if omitNewline {
-		os.Stdout.Write(match)
+		fmt.Printf("%s", match)
 		} else {
 		fmt.Printf("%s\n", match)
 		}
 	}
-	out, ok := path.Bytes(root)
-		
+			
 }
